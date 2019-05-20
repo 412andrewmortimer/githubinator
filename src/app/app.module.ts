@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 
 import * as modules from './modules';
 import { DoofenshmirtzGithubinatorComponent } from './containers/doofenshmirtz-githubinator/doofenshmirtz-githubinator.component';
+import { GithubFormComponent } from './components/github-form/github-form.component';
 
 @NgModule({
-  declarations: [AppComponent, DoofenshmirtzGithubinatorComponent],
+  declarations: [AppComponent, DoofenshmirtzGithubinatorComponent, GithubFormComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, modules.AngularMaterialDependenciesModule],
   providers: [],
   bootstrap: [AppComponent]
