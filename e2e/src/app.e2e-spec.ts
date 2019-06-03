@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, logging, by, element } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,9 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display a Material Toolbar', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Doofenshmirtz Githubinator');
+    expect(element(by.tagName('mat-toolbar'))).toBeDefined();
   });
 
   afterEach(async () => {
