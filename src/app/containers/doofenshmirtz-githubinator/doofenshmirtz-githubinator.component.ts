@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  // tslint:disable-next-line: component-selector
   selector: 'dg-doofenshmirtz-githubinator',
-  templateUrl: './doofenshmirtz-githubinator.component.html',
-  styleUrls: ['./doofenshmirtz-githubinator.component.scss']
+  template: `
+    <mat-toolbar color="primary">
+      <span>Doofenshmirtz Githubinator</span>
+    </mat-toolbar>
+    <dg-search-form></dg-search-form>
+  `
 })
-export class DoofenshmirtzGithubinatorComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class DoofenshmirtzGithubinatorComponent {}
