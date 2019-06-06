@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { Route, RouterModule } from '@angular/router';
@@ -8,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import * as modules from './modules';
+import * as services from './services';
 import { DoofenshmirtzGithubinatorComponent } from './containers/doofenshmirtz-githubinator/doofenshmirtz-githubinator.component';
 import { GithubFormComponent } from './components/github-form/github-form.component';
 
@@ -27,13 +29,14 @@ const routes: Route[] = [
 @NgModule({
   declarations: [AppComponent, DoofenshmirtzGithubinatorComponent, GithubFormComponent],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes),
-    BrowserAnimationsModule,
-    modules.AngularMaterialDependenciesModule
+    HttpClientModule,
+    modules.AngularMaterialDependenciesModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [services.GithubService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

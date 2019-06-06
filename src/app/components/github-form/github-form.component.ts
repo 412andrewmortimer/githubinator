@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GithubService } from '../../services/github.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -12,7 +13,9 @@ import { NgForm } from '@angular/forms';
         Fire Ze Missiles!
       </button>
     </form>
-    <mat-divider></mat-divider>
+    <div *ngFor="let repo of repositoryIndex">
+      <mat-card>{{ repo.full_name }}</mat-card>
+    </div>
   `,
   styles: [
     `
@@ -24,9 +27,7 @@ import { NgForm } from '@angular/forms';
       }
       .search {
         flex-direction: row;
-        margin: 0 auto;
         text-align: center;
-        width: 17rem;
       }
       button {
         flex-direction: row;
@@ -39,9 +40,13 @@ import { NgForm } from '@angular/forms';
 })
 export class GithubFormComponent {
   searchTerm;
+  repositoryIndex;
+
+  constructor(private githubService: GithubService) {}
 
   onSubmit(searchTerm: NgForm) {
-    console.log(searchTerm.value);
+    this.githubService.searchRepos(searchTerm.value)
+      .subscribe(response => this.repositoryIndex = response.items, error => console.log(error));
     searchTerm.reset();
   }
 }
