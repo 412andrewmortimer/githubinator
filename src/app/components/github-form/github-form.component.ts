@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { GithubService } from '../../services/github.service';
 import { NgForm } from '@angular/forms';
+import { Repository } from 'src/app/models';
 
 @Component({
   selector: 'dg-search-form',
@@ -13,9 +14,6 @@ import { NgForm } from '@angular/forms';
         Fire Ze Missiles!
       </button>
     </form>
-    <div *ngFor="let repo of repositoryIndex">
-      <mat-card>{{ repo.full_name }}</mat-card>
-    </div>
   `,
   styles: [
     `
@@ -39,14 +37,21 @@ import { NgForm } from '@angular/forms';
   ]
 })
 export class GithubFormComponent {
+  @Output() executedSearch = new EventEmitter<Repository[]>();
+
   searchTerm;
-  repositoryIndex;
+  repositoryIndex: Repository[] = [];
 
   constructor(private githubService: GithubService) {}
 
   onSubmit(searchTerm: NgForm) {
-    this.githubService.searchRepos(searchTerm.value)
-      .subscribe(response => this.repositoryIndex = response.items, error => console.log(error));
+    this.githubService
+      .searchRepos(searchTerm.value)
+      .subscribe(
+        response => ((this.repositoryIndex = response.items), this.executedSearch.emit(this.repositoryIndex)),
+        error => console.log(error)
+      );
+
     searchTerm.reset();
   }
 }

@@ -12,6 +12,7 @@ import * as modules from './modules';
 import * as services from './services';
 import { DoofenshmirtzGithubinatorComponent } from './containers/doofenshmirtz-githubinator/doofenshmirtz-githubinator.component';
 import { GithubFormComponent } from './components/github-form/github-form.component';
+import { GithubRepoIndexComponent } from './components/github-repo-index/github-repo-index.component';
 
 const routes: Route[] = [
   {
@@ -27,7 +28,7 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, DoofenshmirtzGithubinatorComponent, GithubFormComponent],
+  declarations: [AppComponent, DoofenshmirtzGithubinatorComponent, GithubFormComponent, GithubRepoIndexComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
