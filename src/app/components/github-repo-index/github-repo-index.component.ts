@@ -17,7 +17,15 @@ import { Repository } from 'src/app/models';
         </dl>
       </mat-card-content>
     </mat-card>
-  `
+  `,
+  styles: [
+    `
+      .mat-card {
+        width: 442px;
+        margin-bottom: 2rem;
+      }
+    `
+  ]
 })
 export class GithubRepoIndexComponent {
   @Input() repos: Repository[];

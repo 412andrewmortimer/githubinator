@@ -6,9 +6,9 @@ import { Repository } from 'src/app/models';
 @Component({
   selector: 'dg-search-form',
   template: `
-    <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchTerm)">
+    <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchTerm)" autocomplete="off">
       <mat-form-field class="search">
-        <input ngModel #searchTerm="ngModel" matInput placeholder="enter query here" name="search" />
+        <input ngModel #searchTerm="ngModel" matInput placeholder="enter text" name="search" />
       </mat-form-field>
       <button mat-raised-button color="primary" type="submit">
         Fire Ze Missiles!
@@ -24,13 +24,10 @@ import { Repository } from 'src/app/models';
         align-items: stretch;
       }
       .search {
-        flex-direction: row;
-        text-align: center;
+        width: 12rem;
       }
       button {
         flex-direction: row;
-        margin: 0 auto;
-        text-align: center;
         width: 12rem;
       }
     `
